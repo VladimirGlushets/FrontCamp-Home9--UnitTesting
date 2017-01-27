@@ -245,6 +245,7 @@ module.exports =
 	'use strict';
 
 	var express = __webpack_require__(1);
+	var path = __webpack_require__(2);
 	var router = express.Router();
 	var ArticleController = __webpack_require__(15);
 	var UserController = __webpack_require__(32);
@@ -255,6 +256,10 @@ module.exports =
 	router.get('/', function (req, res, next) {
 	    var controller = new ArticleController(req, res, next);
 	    controller.index();
+	});
+
+	router.get('/angular', function (req, res, next) {
+	    res.sendFile(path.join(__dirname + '/templates/angular/angularIndex.html'));
 	});
 
 	router.get('/login', function (req, res, next) {

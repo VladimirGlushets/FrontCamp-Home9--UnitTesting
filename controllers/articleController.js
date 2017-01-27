@@ -14,7 +14,7 @@ class ArticleController extends BaseController {
         this.res = res;
         this.next = next;
         this.articleService = new ArticleService();
-    }
+    }    
 
     index() {
       let user;

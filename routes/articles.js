@@ -1,4 +1,5 @@
 var express = require('express');
+var path = require("path");
 var router = express.Router();
 var ArticleController = require('../controllers/articleController');
 var UserController = require('../controllers/userController');
@@ -10,6 +11,11 @@ router.get('/',
     function(req, res, next) {
         var controller = new ArticleController(req, res, next);
         controller.index();
+    });
+
+router.get('/angular',
+    function(req, res, next) {
+      res.sendFile(path.join(__dirname + '/templates/angular/angularIndex.html'));
     });
 
 router.get('/login', function(req, res, next) {
