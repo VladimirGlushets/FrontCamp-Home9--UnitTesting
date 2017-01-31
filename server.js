@@ -84,13 +84,14 @@ module.exports =
 	var articles = __webpack_require__(14);
 	var apiArticles = __webpack_require__(40);
 	var users = __webpack_require__(42);
+	var apiUsers = __webpack_require__(43);
 
 	var app = express();
 
 	// view engine setup
 	// app.set('views', path.join(__dirname, 'views'));
 	// app.set('view engine', 'jade');
-	app.engine('ejs', __webpack_require__(43)); //layout partial block
+	app.engine('ejs', __webpack_require__(45)); //layout partial block
 	app.set('views', path.join(__dirname, '/templates'));
 	app.set('view engine', 'ejs');
 
@@ -121,6 +122,7 @@ module.exports =
 	app.use('/', articles);
 	app.use('/api/articles', apiArticles);
 	app.use('/users', users);
+	app.use('/api/users', apiUsers);
 
 	// catch 404 and forward to error handler
 	app.use(function (req, res, next) {
@@ -253,12 +255,12 @@ module.exports =
 	var passportModule = __webpack_require__(36);
 
 	/* GET home page. */
-	router.get('/', function (req, res, next) {
+	router.get('/react', function (req, res, next) {
 	    var controller = new ArticleController(req, res, next);
 	    controller.index();
 	});
 
-	router.get('/angular', function (req, res, next) {
+	router.get('/', function (req, res, next) {
 	    res.sendFile(path.join(__dirname + '/templates/angular/angularIndex.html'));
 	});
 
@@ -1232,6 +1234,104 @@ module.exports =
 
 /***/ },
 /* 43 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var express = __webpack_require__(1);
+	var router = express.Router();
+	var ApiUserController = __webpack_require__(44);
+	var passport = __webpack_require__(8);
+
+	/* GET /api/users */
+	router.get('/current', function (req, res, next) {
+	    var controller = new ApiUserController(req, res, next);
+	    controller.getCurrentUser();
+	});
+
+	router.post('/create', function (req, res, next) {
+	    var controller = new ApiUserController(req, res, next);
+	    controller.createUser(req.body);
+	});
+
+	router.post('/login', passport.authenticate('local', {
+	    successRedirect: '/',
+	    failureRedirect: '/login'
+	}));
+
+	router.get('/logout', function (req, res, next) {
+	    var controller = new ApiUserController(req, res, next);
+	    controller.logout();
+	});
+
+	module.exports = router;
+
+/***/ },
+/* 44 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var UserService = __webpack_require__(33);
+
+	var getUserDto = function getUserDto(dbUser) {
+	    var currentUser = {};
+	    if (dbUser) {
+	        currentUser.name = dbUser.username;
+	        currentUser.email = dbUser.email;
+	    }
+	    return currentUser;
+	};
+
+	var ApiUserController = function () {
+	    function ApiUserController(req, res, next) {
+	        _classCallCheck(this, ApiUserController);
+
+	        this.req = req;
+	        this.res = res;
+	        this.res.setHeader('Content-Type', 'application/json');
+	        this.next = next;
+	        this.userService = new UserService();
+	    }
+
+	    _createClass(ApiUserController, [{
+	        key: 'getCurrentUser',
+	        value: function getCurrentUser() {
+	            return this.sendResult(getUserDto(this.req.user));
+	        }
+	    }, {
+	        key: 'createUser',
+	        value: function createUser(model) {
+	            var _this = this;
+
+	            this.userService.create(model).then(function (result) {
+	                return _this.sendResult(getUserDto(result));
+	            });
+	        }
+	    }, {
+	        key: 'logout',
+	        value: function logout() {
+	            this.req.logout();
+	            return this.sendResult(true);
+	        }
+	    }, {
+	        key: 'sendResult',
+	        value: function sendResult(data) {
+	            this.res.json(data);
+	        }
+	    }]);
+
+	    return ApiUserController;
+	}();
+
+	module.exports = ApiUserController;
+
+/***/ },
+/* 45 */
 /***/ function(module, exports) {
 
 	module.exports = require("ejs-locals");

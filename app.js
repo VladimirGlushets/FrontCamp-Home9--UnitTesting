@@ -14,6 +14,7 @@ var config = require('./config');
 var articles = require('./routes/articles');
 var apiArticles = require('./routes/api/articlesApi');
 var users = require('./routes/users');
+var apiUsers = require('./routes/api/usersApi');
 
 var app = express();
 
@@ -51,6 +52,7 @@ app.use(passport.session())
 app.use('/', articles);
 app.use('/api/articles', apiArticles);
 app.use('/users', users);
+app.use('/api/users', apiUsers);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

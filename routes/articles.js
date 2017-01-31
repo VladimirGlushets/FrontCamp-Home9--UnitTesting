@@ -7,13 +7,13 @@ var passport = require('passport');
 var passportModule = require('../authentication');
 
 /* GET home page. */
-router.get('/',
+router.get('/react',
     function(req, res, next) {
         var controller = new ArticleController(req, res, next);
         controller.index();
     });
 
-router.get('/angular',
+router.get('/',
     function(req, res, next) {
       res.sendFile(path.join(__dirname + '/templates/angular/angularIndex.html'));
     });

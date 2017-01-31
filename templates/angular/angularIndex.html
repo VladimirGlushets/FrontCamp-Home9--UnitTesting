@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='app'>
 
 <head>
     <title>
@@ -9,6 +9,9 @@
     <link rel='stylesheet' href='/css/article.css' />
     <link rel='stylesheet' href='/css/navbar.css' />
 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <!-- <script src="/angular/todo.js"></script>     -->
+
 </head>
 
 <body>
@@ -16,16 +19,36 @@
         <div class="wrapper">
             <div class="header-content">
                 <div class="logo">
-                    <a href="https://nodejs.org/">Powered by NodeJs</a>
+                    <a href="https://nodejs.org/">Powered by NodeJs and Angular 1.6.1</a>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="../build/index.js"></script>
-    <script src="/js/script.js"></script>
+    <top-navigation></top-navigation>
+    <articles></articles>
+
+    <!-- <script src="../../public/angular/vendor/jquery/jquery-3.1.1.min.js"></script> -->
+
+    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+    <!-- <script src="../build/index.js"></script> -->
+
+    <script src="/angular/Shared/app.shared.js"></script>
+    <script src="/angular/Shared/Directives/topNavigation.js"></script>
+    <script src="/angular/Shared/Directives/articles.js"></script>
+    <script src="/angular/Shared/Services/userService.js"></script>
+    <script src="/angular/Shared/Services/articleService.js"></script>
+    <script src="/angular/Shared/Constants/apiRoutes.js"></script>
+    <script src="/angular/Shared/Constants/menuItems.js"></script>
+
+    <script src="/angular/app.js"></script>
+
+    <script src="/angular/TodoListController.js"></script>
+
+
+
+    <!-- <script src="/angular/todo.js"></script>     -->
 
 </body>
 

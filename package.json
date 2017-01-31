@@ -8,6 +8,7 @@
     "production": "webpack -p --progress && node server"
   },
   "dependencies": {
+    "angular": "^1.6.1",
     "async": "^2.1.4",
     "async-series": "0.0.1",
     "babel-preset-node6": "^11.0.0",
