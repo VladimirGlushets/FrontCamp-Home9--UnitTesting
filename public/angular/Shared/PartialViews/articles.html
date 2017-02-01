@@ -1,11 +1,14 @@
 <div class="content-container">
 
         <div>
+          <div>
             <div class="create-btn">
-                <a class="create-link" href="http://mentoring-nodejs-hlushets.herokuapp.com/articles/create">Create New</a>
+                <a class="create-link" href="#!/article/create">Create New</a>
             </div>
-
-            {{ articles.length }}
+            <div class="">
+                Articles count is {{ articles.length }}
+            </div>
+          </div>
 
             <div ng-repeat="item in articles">
 
@@ -14,10 +17,10 @@
                       <div class="image">
 
                             <div ng-show="{{ isUserAuth }}">
-                                <a class="delete-article" href="{{ item.actionUrls.deleteArticleUrl }}" data-id="{{ item.article._id }}">Remove</a>
+                                <a class="delete-article" href="#" data-id="{{ item.article._id }}" ng-click="delete(item.article._id)">Remove</a>
                             </div>
                             <div ng-show="{{ isUserAuth }}">
-                                <a class="update-article" href="{{ item.actionUrls.updateArticleUrl }}">Update</a>
+                                <a class="update-article" href="{{ '#!/article/update/' + item.article._id }}">Update</a>
                             </div>
 
 

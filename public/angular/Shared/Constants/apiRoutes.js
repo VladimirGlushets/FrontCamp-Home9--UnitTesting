@@ -8,7 +8,11 @@
         'CreateUser': './api/users/create',
 
 
-        'GetAllArticles': '/api/articles'
+        'GetAllArticles': '/api/articles',
+        'ArticleDetails': '/api/articles/',
+        'ArticleCreate': '/api/articles/',
+        'ArticleUpdate': '/api/articles/',
+        'ArticleDelete': '/api/articles/'
     };
 
     app.constant('ApiRoutes', apiRoutes);

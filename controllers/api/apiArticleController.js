@@ -21,7 +21,7 @@ class ApiArticleController {
                 obj.deleteArticleUrl = UrlsHelper.getDeleteUrl(this.req.protocol, this.req.headers.host);
                 obj.updateArticleUrl = UrlsHelper.getUpdateViewUrl(this.req.protocol, this.req.headers.host, articles[i]._id);
                 list.push({article: articles[i], actionUrls: obj});
-            }            
+            }
             this.sendResult(list);
         }).catch((err) => {
             this.sendBadResult(err.stack);
@@ -52,7 +52,7 @@ class ApiArticleController {
         });
     }
 
-    delete(articleId) {
+    delete(articleId) {      
         this.articleService.deleteArticle(articleId).then((data) => {
             this.sendResult(data);
         }).catch((err) => {

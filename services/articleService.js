@@ -13,7 +13,7 @@ class ArticleService {
         }).exec();
     }
 
-    deleteArticle(articleId) {
+    deleteArticle(articleId) {      
         return Article.findOne({
             '_id': articleId
         }).remove().exec();
@@ -30,7 +30,6 @@ class ArticleService {
                 name: model.userName
             }
         });
-
         return newArticle.save();
     }
 

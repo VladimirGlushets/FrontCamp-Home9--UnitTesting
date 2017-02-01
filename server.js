@@ -590,6 +590,7 @@ module.exports =
 	    }, {
 	        key: 'deleteArticle',
 	        value: function deleteArticle(articleId) {
+	            console.log(articleId);
 	            return Article.findOne({
 	                '_id': articleId
 	            }).remove().exec();
@@ -607,7 +608,6 @@ module.exports =
 	                    name: model.userName
 	                }
 	            });
-
 	            return newArticle.save();
 	        }
 	    }, {
@@ -1185,6 +1185,7 @@ module.exports =
 	        value: function _delete(articleId) {
 	            var _this5 = this;
 
+	            console.log(articleId);
 	            this.articleService.deleteArticle(articleId).then(function (data) {
 	                _this5.sendResult(data);
 	            }).catch(function (err) {
@@ -1254,10 +1255,24 @@ module.exports =
 	    controller.createUser(req.body);
 	});
 
-	router.post('/login', passport.authenticate('local', {
-	    successRedirect: '/',
-	    failureRedirect: '/login'
-	}));
+	// router.post('/login',
+	//     passport.authenticate('local', {
+	//         successRedirect: '!#/',
+	//         failureRedirect: '!#/login'
+	//     })
+	// );
+
+	router.post('/login', passport.authenticate('local'), function (req, res) {
+	    var host = req.get('host');
+	    var path = host + '/';
+	    console.log(path);
+	    //res.redirect(path);
+	    res.writeHead(303, {
+	        'Location': path,
+	        'Method': 'GET' // TODO: how to change Method to Get?
+	    });
+	    res.end();
+	});
 
 	router.get('/logout', function (req, res, next) {
 	    var controller = new ApiUserController(req, res, next);
@@ -1281,8 +1296,11 @@ module.exports =
 	var getUserDto = function getUserDto(dbUser) {
 	    var currentUser = {};
 	    if (dbUser) {
+	        currentUser.id = dbUser._id;
 	        currentUser.name = dbUser.username;
 	        currentUser.email = dbUser.email;
+	    } else {
+	        currentUser = null;
 	    }
 	    return currentUser;
 	};

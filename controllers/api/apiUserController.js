@@ -3,8 +3,12 @@ var UserService = require('../../services/userService');
 var getUserDto = function(dbUser){
   let currentUser = {};
   if (dbUser) {
+      currentUser.id = dbUser._id;
       currentUser.name = dbUser.username;
       currentUser.email = dbUser.email;
+  }
+  else{
+    currentUser = null;
   }
   return currentUser;
 };

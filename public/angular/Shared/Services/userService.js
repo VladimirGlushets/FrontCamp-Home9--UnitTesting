@@ -17,7 +17,7 @@
           return $http.get(apiRoutes.GetCurrentUser).then(extractData);
         }
 
-        function login(user){
+        function login(user){          
           return $http.post(apiRoutes.Login, user).then(extractData);
         }
 

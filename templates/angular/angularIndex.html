@@ -9,9 +9,6 @@
     <link rel='stylesheet' href='/css/article.css' />
     <link rel='stylesheet' href='/css/navbar.css' />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
-    <!-- <script src="/angular/todo.js"></script>     -->
-
 </head>
 
 <body>
@@ -27,28 +24,31 @@
     </div>
 
     <top-navigation></top-navigation>
-    <articles></articles>
+     <ng-view></ng-view>
 
     <!-- <script src="../../public/angular/vendor/jquery/jquery-3.1.1.min.js"></script> -->
 
     <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
     <!-- <script src="../build/index.js"></script> -->
 
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script> -->
+    <script src="/angular/vendor/angular/angular.min.js"></script>
+    <script src="/angular/vendor/angular/angular-route.min.js"></script>
+
     <script src="/angular/Shared/app.shared.js"></script>
     <script src="/angular/Shared/Directives/topNavigation.js"></script>
     <script src="/angular/Shared/Directives/articles.js"></script>
+    <script src="/angular/Shared/Directives/createUpdateArticleForm.js"></script>
     <script src="/angular/Shared/Services/userService.js"></script>
     <script src="/angular/Shared/Services/articleService.js"></script>
     <script src="/angular/Shared/Constants/apiRoutes.js"></script>
     <script src="/angular/Shared/Constants/menuItems.js"></script>
 
     <script src="/angular/app.js"></script>
+    <script src="/angular/route-config.js"></script>
 
-    <script src="/angular/TodoListController.js"></script>
-
-
-
-    <!-- <script src="/angular/todo.js"></script>     -->
+    <script src="/angular/Login/loginCtrl.js"></script>
+    <!-- <script src="/angular/Articles/articlesCtrl.js"></script> -->
 
 </body>
 
