@@ -12,7 +12,7 @@
             <div class="col-md-4 float-right">
               <span>Search by Title: </span>
                 <input type="text" ng-model="searchText"/>
-                <div>{{ filterData.length }} of {{filterObj.Total}}</div>
+                <amount-of-articles filter-data-length="filterData.length" total="filterObj.Total"></amount-of-articles>
             </div>
           </div>
           </div>
@@ -62,46 +62,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
-            <!--<div ng-repeat="item in articles | filter:{ article : {title : searchText} } ">-->
-            <!--&lt;!&ndash;<div ng-repeat="item in articles | filter: searchTitle ">&ndash;&gt;-->
-
-              <!--<div class="article-container">-->
-                  <!--<div class="body">-->
-                      <!--<div class="image">-->
-
-                            <!--<div ng-show="{{ isUserAuth }}">-->
-                                <!--<a class="delete-article" href="#" data-id="{{ item.article._id }}" ng-click="delete(item.article._id)">Remove</a>-->
-                            <!--</div>-->
-                            <!--<div ng-show="{{ isUserAuth }}">-->
-                                <!--<a class="update-article" href="{{ '#!/article/update/' + item.article._id }}">Update</a>-->
-                            <!--</div>-->
-
-
-                            <!--<div class="floater">-->
-                              <!--<a href="http://www.abc.net.au/news/2016-12-28/australia-pakistan-mcg-second-test-day-three/8151468" target="_blank"><img src="http://www.abc.net.au/news/image/8151536-1x1-700x700.jpg"></a>-->
-                            <!--</div>-->
-                      <!--</div>-->
-                      <!--<div class="title">-->
-                          <!--<a href='{{ item.actionUrls.detailArticleUrl }}'>-->
-                              <!--{{ item.article.title }}-->
-                          <!--</a>-->
-                      <!--</div>-->
-                      <!--<div class="author">-->
-                          <!--{{ item.article.user.name }}-->
-                      <!--</div>-->
-                      <!--<div class="description">-->
-                          <!--{{ item.article.content }}-->
-                      <!--</div>-->
-                      <!--<div class="publish-at">-->
-                          <!--{{ item.article.createdDate }}-->
-                      <!--</div>-->
-                  <!--</div>-->
-              <!--</div>-->
-
-            <!--</div>-->
-
         </div>
     </div>

@@ -15,8 +15,28 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      '../vendor/jquery/jquery-1.11.1.js',
+      '../vendor/jquery/jquery-ui.js',
+      '../vendor/bootstrap.js',
+
       '../vendor/angular/angular.js',
       '../vendor/angular/angular-mocks.js',
+      '../vendor/angular/angular-route.js',
+      '../vendor/angular/angular-animate.js',
+      '../vendor/angular/angular-sanitize.js',
+      '../vendor/angular/angular-bootstrap-multiselect.js',
+      '../vendor/ui-bootstrap/ui-bootstrap-tpls-1.3.3.min.js',
+
+      '../Shared/app.shared.js',
+      '../Shared/Directives/amountOfArticles.js',
+      '../Shared/Directives/createUpdateArticleForm.js',
+
+      '../Shared/Services/userService.js',
+      '../Shared/Services/articleService.js',
+      '../Shared/Constants/apiRoutes.js',
+
+      '../Shared/PartialViews/*.html',
+
       '../app.js',
       'unit/*.js'
     ],
@@ -32,7 +52,8 @@ module.exports = function(config) {
 
     preprocessors: {
         // add webpack as preprocessor
-        'test/unit/*.js': ['webpack']
+      '../Shared/PartialViews/*.html': ['ng-html2js'],
+      'test/unit/*.js': ['webpack']
       },
 
       webpack: {
@@ -47,7 +68,23 @@ module.exports = function(config) {
             // webpack-dev-middleware configuration
             // i. e.
             stats: 'errors-only'
-          },          
+          },
+
+    ngHtml2JsPreprocessor: {
+      // strip this from the file path
+      // stripPrefix: 'public/',
+      // stripSuffix: '.ext',
+      // // prepend this to the
+      // prependPrefix: 'served/',
+
+      // - setting this option will create only a single module that contains templates
+      //   from all the files, so you can load them all with module('foo')
+      // - you may provide a function(htmlPath, originalPath) instead of a string
+      //   if you'd like to generate modules dynamically
+      //   htmlPath is a originalPath stripped and/or prepended
+      //   with all provided suffixes and prefixes
+      moduleName: 'app'
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -74,7 +111,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode

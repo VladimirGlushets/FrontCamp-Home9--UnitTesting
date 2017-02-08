@@ -13,7 +13,7 @@
               var itemsPerPage = 10;
               var maxSize = 10;
               $scope.allArticlesSource =[];
-
+              $scope.filterDataLength = [];
               $scope.loadArticles = loadArticles;
               $scope.delete = deleteArticle;
 

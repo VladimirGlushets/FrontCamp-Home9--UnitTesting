@@ -1,6 +1,5 @@
 <div class="content-container">
   <div class="article-container">
-        <!-- <form action="{{ isCreate ? '/api/articles' : '#/article/update/articleId' }}" method="post"> -->
         <form ng-submit="action()" role="form">
             <input type="hidden" name="articleId" ng-model="articleId" value="{{articleId}}">
             <input type="hidden" name="userId" ng-model="userId" value="{{userId}}">

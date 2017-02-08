@@ -75,7 +75,30 @@
 
           },
 
-          templateUrl: '/angular/Shared/PartialViews/createUpdateArticleForm.html'
-      };
+          // templateUrl: '/angular/Shared/PartialViews/createUpdateArticleForm.html'
+          template:
+              '<div class="content-container">' +
+                  '<div class="article-container">' +
+                      '<form ng-submit="action()" role="form">' +
+                          '<input type="hidden" name="articleId" ng-model="articleId" value="{{articleId}}">' +
+                              '<input type="hidden" name="userId" ng-model="userId" value="{{userId}}">' +
+                                  '<input type="hidden" name="userName" ng-model="userName" value="{{userName}}">' +
+                                      '<div class="author">Title:</div>' +
+                                      '<input type="text" name="title" id="title" class="form-control" ng-model="title" required />' +
+                                      '<span ng-show="form.title.$error.required" class="help-block">Title is required</span>' +
+
+                                      '<div class="author">Article Content:<div>' +
+
+                                      '<textarea rows="4" cols="50" type="text" name="content" id="content" ng-model="content" required minlength="20"></textarea><br>' +
+                                      '<span ng-show="form.content.$dirty && form.content.$error.required" class="help-block">Content is required</span>' +
+
+                                      '<input class="create-btn" type="submit" value="{{ isCreate ? \'Create\' : \'Update\' }}">' +
+
+                      '</form>' +
+                  '</div>' +
+              '</div>'
+
+
+    };
     };
 })(angular.module('app.shared'));
