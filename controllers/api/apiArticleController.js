@@ -13,6 +13,7 @@ class ApiArticleController {
     }
 
     getAllArticles() {
+                        
         this.articleService.getAllArticles().then((articles) => {
             var list = [];
             for (var i = 0; i < articles.length; i++) {
@@ -25,6 +26,29 @@ class ApiArticleController {
             this.sendResult(list);
         }).catch((err) => {
             this.sendBadResult(err.stack);
+        });
+    }
+
+    getArticles(page, itemsPerPage) {
+        
+        this.articleService.getArticles(page, itemsPerPage).then((articles) => {
+            var list = [];
+            for (var i = 0; i < articles.length; i++) {
+                var obj = {};
+                obj.detailArticleUrl = UrlsHelper.getDetailsUrl(this.req.protocol, this.req.headers.host, articles[i]._id);
+                obj.deleteArticleUrl = UrlsHelper.getDeleteUrl(this.req.protocol, this.req.headers.host);
+                obj.updateArticleUrl = UrlsHelper.getUpdateViewUrl(this.req.protocol, this.req.headers.host, articles[i]._id);
+                list.push({article: articles[i], actionUrls: obj});
+            }
+            this.sendResult(list);
+        }).catch((err) => {
+            this.sendBadResult(err.stack);
+        });
+    }
+
+    getArticlesTotal() {
+        this.articleService.getArticlesTotal().then((total)=>{
+            this.sendResult(total);
         });
     }
 

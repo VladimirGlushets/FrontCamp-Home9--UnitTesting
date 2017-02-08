@@ -9,12 +9,13 @@
                Title:
             </div>
             <input type="text" name="title" id="title" class="form-control" ng-model="title" required />
-            <span ng-show="form.title.$dirty && form.title.$error.required" class="help-block">Title is required</span>
+            <span ng-show="form.title.$error.required" class="help-block">Title is required</span>
+
             <div class="author">
                Article Content:
             </div>
 
-            <textarea rows="4" cols="50" type="text" name="content" id="content" ng-model="content" required></textarea><br>
+            <textarea rows="4" cols="50" type="text" name="content" id="content" ng-model="content" required minlength="20"></textarea><br>
             <span ng-show="form.content.$dirty && form.content.$error.required" class="help-block">Content is required</span>
 
             <input class="create-btn" type="submit" value="{{ isCreate ? 'Create' : 'Update' }}">

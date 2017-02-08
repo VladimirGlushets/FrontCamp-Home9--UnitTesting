@@ -581,6 +581,17 @@ module.exports =
 	            return Article.find({}).exec();
 	        }
 	    }, {
+	        key: 'getArticles',
+	        value: function getArticles(page, itemsPerPage) {
+	            var skip = (page - 1) * itemsPerPage;
+	            return Article.find({}).skip(skip).limit(10).exec();
+	        }
+	    }, {
+	        key: 'getArticlesTotal',
+	        value: function getArticlesTotal() {
+	            return Article.count().exec();
+	        }
+	    }, {
 	        key: 'getArticleById',
 	        value: function getArticleById(articleId) {
 	            return Article.findOne({
@@ -590,7 +601,6 @@ module.exports =
 	    }, {
 	        key: 'deleteArticle',
 	        value: function deleteArticle(articleId) {
-	            console.log(articleId);
 	            return Article.findOne({
 	                '_id': articleId
 	            }).remove().exec();
@@ -1055,27 +1065,29 @@ module.exports =
 
 	/* GET /api/articles */
 	router.get('/', function (req, res, next) {
-	  var controller = new ApiArticleController(req, res, next);
-	  controller.getAllArticles();
+	    var controller = new ApiArticleController(req, res, next);
+	    controller.getAllArticles();
+	});
+
+	router.get('/total', function (req, res, next) {
+	    var controller = new ApiArticleController(req, res, next);
+	    controller.getArticlesTotal();
+	});
+
+	router.get('/:page/:itemsPerPage', function (req, res, next) {
+	    var controller = new ApiArticleController(req, res, next);
+	    controller.getArticles(req.params['page'], req.params['itemsPerPage']);
 	});
 
 	/* GET /api/articles/:id. */
 	router.get('/:articleId', function (req, res, next) {
-	  var controller = new ApiArticleController(req, res, next);
-	  controller.details(req.params['articleId']);
+	    var controller = new ApiArticleController(req, res, next);
+	    controller.details(req.params['articleId']);
 	});
 
-	/* POST /api/articles (create new article).
-	  {
-	    userId: 'currentUserId',
-	    userName: 'currentUserName',
-	    title: 'Article Title',
-	    content: "Article Content"
-	  }
-	*/
 	router.post('/', function (req, res, next) {
-	  var controller = new ApiArticleController(req, res, next);
-	  controller.createArticleAction(req.body);
+	    var controller = new ApiArticleController(req, res, next);
+	    controller.createArticleAction(req.body);
 	});
 
 	/* PUT /api/articles article update.
@@ -1086,8 +1098,8 @@ module.exports =
 	  }
 	*/
 	router.put('/', function (req, res, next) {
-	  var controller = new ApiArticleController(req, res, next);
-	  controller.update(req.body);
+	    var controller = new ApiArticleController(req, res, next);
+	    controller.update(req.body);
 	});
 
 	/* DELETE /api/articles
@@ -1096,8 +1108,8 @@ module.exports =
 	  }
 	*/
 	router.delete('/', function (req, res, next) {
-	  var controller = new ApiArticleController(req, res, next);
-	  controller.delete(req.body['articleId']);
+	    var controller = new ApiArticleController(req, res, next);
+	    controller.delete(req.body['articleId']);
 	});
 
 	module.exports = router;
@@ -1148,48 +1160,75 @@ module.exports =
 	            });
 	        }
 	    }, {
-	        key: 'details',
-	        value: function details(articleId) {
+	        key: 'getArticles',
+	        value: function getArticles(page, itemsPerPage) {
 	            var _this2 = this;
 
-	            this.articleService.getArticleById(articleId).then(function (article) {
-	                _this2.sendResult(article);
+	            this.articleService.getArticles(page, itemsPerPage).then(function (articles) {
+	                var list = [];
+	                for (var i = 0; i < articles.length; i++) {
+	                    var obj = {};
+	                    obj.detailArticleUrl = UrlsHelper.getDetailsUrl(_this2.req.protocol, _this2.req.headers.host, articles[i]._id);
+	                    obj.deleteArticleUrl = UrlsHelper.getDeleteUrl(_this2.req.protocol, _this2.req.headers.host);
+	                    obj.updateArticleUrl = UrlsHelper.getUpdateViewUrl(_this2.req.protocol, _this2.req.headers.host, articles[i]._id);
+	                    list.push({ article: articles[i], actionUrls: obj });
+	                }
+	                _this2.sendResult(list);
 	            }).catch(function (err) {
 	                _this2.sendBadResult(err.stack);
 	            });
 	        }
 	    }, {
-	        key: 'createArticleAction',
-	        value: function createArticleAction(model) {
+	        key: 'getArticlesTotal',
+	        value: function getArticlesTotal() {
 	            var _this3 = this;
 
-	            this.articleService.createArticle(model).then(function (article) {
-	                _this3.sendResult(article);
-	            }).catch(function (err) {
-	                _this3.sendBadResult(err.stack);
+	            this.articleService.getArticlesTotal().then(function (total) {
+	                _this3.sendResult(total);
 	            });
 	        }
 	    }, {
-	        key: 'update',
-	        value: function update(model) {
+	        key: 'details',
+	        value: function details(articleId) {
 	            var _this4 = this;
 
-	            this.articleService.updateArticle(model).then(function (data) {
-	                _this4.sendResult(data);
+	            this.articleService.getArticleById(articleId).then(function (article) {
+	                _this4.sendResult(article);
 	            }).catch(function (err) {
 	                _this4.sendBadResult(err.stack);
 	            });
 	        }
 	    }, {
-	        key: 'delete',
-	        value: function _delete(articleId) {
+	        key: 'createArticleAction',
+	        value: function createArticleAction(model) {
 	            var _this5 = this;
 
-	            console.log(articleId);
-	            this.articleService.deleteArticle(articleId).then(function (data) {
-	                _this5.sendResult(data);
+	            this.articleService.createArticle(model).then(function (article) {
+	                _this5.sendResult(article);
 	            }).catch(function (err) {
 	                _this5.sendBadResult(err.stack);
+	            });
+	        }
+	    }, {
+	        key: 'update',
+	        value: function update(model) {
+	            var _this6 = this;
+
+	            this.articleService.updateArticle(model).then(function (data) {
+	                _this6.sendResult(data);
+	            }).catch(function (err) {
+	                _this6.sendBadResult(err.stack);
+	            });
+	        }
+	    }, {
+	        key: 'delete',
+	        value: function _delete(articleId) {
+	            var _this7 = this;
+
+	            this.articleService.deleteArticle(articleId).then(function (data) {
+	                _this7.sendResult(data);
+	            }).catch(function (err) {
+	                _this7.sendBadResult(err.stack);
 	            });
 	        }
 	    }, {
@@ -1255,24 +1294,25 @@ module.exports =
 	    controller.createUser(req.body);
 	});
 
-	// router.post('/login',
-	//     passport.authenticate('local', {
-	//         successRedirect: '!#/',
-	//         failureRedirect: '!#/login'
-	//     })
-	// );
+	router.post('/login', passport.authenticate('local', {
+	    successRedirect: '/',
+	    failureRedirect: '/#!/login'
+	}));
 
-	router.post('/login', passport.authenticate('local'), function (req, res) {
-	    var host = req.get('host');
-	    var path = host + '/';
-	    console.log(path);
-	    //res.redirect(path);
-	    res.writeHead(303, {
-	        'Location': path,
-	        'Method': 'GET' // TODO: how to change Method to Get?
-	    });
-	    res.end();
-	});
+	// router.post('/login',
+	//     passport.authenticate('local'),
+	//     function(req, res) {
+	//         var host = req.get('host');
+	//         var path = host + '/';
+	//         console.log(path);
+	//         //res.redirect(path);
+	//         res.writeHead(303, {
+	//             'Location': path ,
+	//             'Method': 'GET'     // TODO: how to change Method to Get?
+	//         });
+	//         res.end();
+	//
+	// });
 
 	router.get('/logout', function (req, res, next) {
 	    var controller = new ApiUserController(req, res, next);

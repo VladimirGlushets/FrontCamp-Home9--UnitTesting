@@ -92,6 +92,10 @@
     max-height: 100%;
 }
 
+.float-right{
+    float: right;
+}
+
 /* Portrait tablet to landscape and desktop */
 
 @media all and (min-width: 768px) and (max-width: 979px) {

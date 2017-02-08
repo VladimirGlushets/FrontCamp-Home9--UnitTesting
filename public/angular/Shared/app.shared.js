@@ -1,2 +1,2 @@
 angular
-    .module('app.shared', []);
+    .module('app.shared', ['ngAnimate', 'ngSanitize', 'ui.bootstrap']);

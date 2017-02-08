@@ -8,20 +8,22 @@ router.get('/', function(req, res, next) {
     controller.getAllArticles();
 });
 
+router.get('/total', function(req, res, next) {
+    var controller = new ApiArticleController(req, res, next);
+    controller.getArticlesTotal();
+});
+
+router.get('/:page/:itemsPerPage', function(req, res, next) {
+    var controller = new ApiArticleController(req, res, next);
+    controller.getArticles(req.params['page'], req.params['itemsPerPage']);
+});
+
 /* GET /api/articles/:id. */
 router.get('/:articleId', function(req, res, next) {
     var controller = new ApiArticleController(req, res, next);
     controller.details(req.params['articleId']);
 })
 
-/* POST /api/articles (create new article).
-  {
-    userId: 'currentUserId',
-    userName: 'currentUserName',
-    title: 'Article Title',
-    content: "Article Content"
-  }
-*/
 router.post('/', function(req, res, next) {
     var controller = new ApiArticleController(req, res, next);
     controller.createArticleAction(req.body);

@@ -10,5 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.15.3"
+  },
+  "devDependencies": {
+    "karma-webpack": "^2.0.2"
   }
 }
