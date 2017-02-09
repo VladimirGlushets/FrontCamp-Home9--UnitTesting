@@ -54,6 +54,7 @@
     "debug-loader": "0.0.1",
     "ejs-locals": "^1.0.2",
     "extract-text-webpack-plugin": "^1.0.1",
+    "httpbackend": "^2.0.0",
     "jasmine": "^2.5.3",
     "karma": "^1.4.1",
     "karma-chrome-launcher": "^2.0.0",
