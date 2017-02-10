@@ -39,8 +39,6 @@
       });
 
     $scope.error = '';
-    $scope.create = create;
-    $scope.update = update;
 
     function create(){
       var model = {

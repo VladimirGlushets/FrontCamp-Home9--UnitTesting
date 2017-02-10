@@ -30,6 +30,7 @@ module.exports = function(config) {
       '../Shared/app.shared.js',
       '../Shared/Directives/amountOfArticles.js',
       '../Shared/Directives/createUpdateArticleForm.js',
+      '../Shared/Directives/paggination.js',
 
       '../Shared/Services/userService.js',
       '../Shared/Services/articleService.js',

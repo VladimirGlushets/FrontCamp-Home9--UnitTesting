@@ -17,7 +17,7 @@
           </div>
           </div>
 
-            <uib-pagination
+            <!-- <uib-pagination
                 ng-model="filterObj.Page"
                 total-items="filterData.length"
                 max-size=10
@@ -27,7 +27,19 @@
                 boundary-link-numbers="true"
                 rotate="false"
                 ng-show="(filterData.length > filterObj.ItemsPerPage)">
-                </uib-pagination>
+                </uib-pagination> -->
+
+                <div class="articles-paging-container">
+                      <paggination flex
+                        pages="filterData.length"
+                        current-page="1"
+                        class="articles-paging-control"
+                        steps="5"
+                        page-changed="vm.pageChanged()"
+                        cl-align="center center">
+
+                        </paggination>
+                </div>
 
             <div ng-repeat="item in filterData = (allArticlesSource | filter:{ article : {title : searchText} }) | limitTo:filterObj.ItemsPerPage:filterObj.ItemsPerPage*(filterObj.Page - 1)">
                     <div class="article-container">

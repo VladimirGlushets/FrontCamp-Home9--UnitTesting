@@ -2,163 +2,178 @@ describe('Testing createUpdateArticleForm directive', function(){
 
   describe('Testing directive controller', function(){
 
-    var $compile,
-          $scope,
-          $rootScope,
+    var   $scope,
           $controller,
           $q,
-          //directiveElem,
-          //directiveController,
-          //directiveScope,
-          //userService,
-          getArticleDefer,
+          $location,
+          getCurrentUserDefer,
+          createArticleDefer,
+          updateArticleDefer,
+          getDetailsArticleDefer,
           userServiceMock,
           articleServiceMock,
-          routeParams,
           articleService,
           location,
+          user,
+          newArticle,
+          createController,
           CreateUpdateArticleFormController;
 
-        // Before each test load bloglog module
       beforeEach(angular.mock.module('app'));
 
-      beforeEach(angular.mock.inject(function(_$compile_, _$rootScope_, _$controller_, $location, $routeParams, _$q_ ) {
-        $compile = _$compile_;
-        $rootScope = _$rootScope_;
+      beforeEach(angular.mock.inject(function(_$rootScope_, _$controller_, _$location_, _$q_) {
         $controller = _$controller_;
-        $scope = $rootScope.$new();
+        $scope = _$rootScope_.$new();
         $q = _$q_;
+        $location = _$location_;
+
+        user = {
+          id: 1,
+          name: 'testuser'
+        };
+
+        newArticle={
+          _id: 1,
+          title: 'title',
+          content: 'content',
+          comments: [],
+          user: {
+              _id: '1',
+              username: 'userName'
+          }
+        };
 
         userServiceMock = {
             getCurrentUser: function() {
-              getArticleDefer = $q.defer();
-              return getArticleDefer.promise;
+              getCurrentUserDefer = $q.defer();
+              return getCurrentUserDefer.promise;
            }
         };
 
         articleServiceMock = {
-            create: function(model) {
-              getArticleDefer = $q.defer();
-              return getArticleDefer.promise;
-           }
+          create: function(model) {
+              createArticleDefer = $q.defer();
+              return createArticleDefer.promise;
+          },
+          update: function(model) {
+             updateArticleDefer = $q.defer();
+             return updateArticleDefer.promise;
+          },
+          getDetails: function(id) {
+            getDetailsArticleDefer = $q.defer();
+            return getDetailsArticleDefer.promise;
+         }
         };
 
-        CreateUpdateArticleFormController = $controller('CreateUpdateArticleFormController', {
-              $scope: $scope,
-              userService: userServiceMock,
-              articleService: articleServiceMock,
-              $routeParams: $routeParams,
-            });
+        createController = function(routeParams){
+          return $controller('CreateUpdateArticleFormController', {
+                $scope: $scope,
+                userService: userServiceMock,
+                articleService: articleServiceMock,
+                $routeParams: routeParams,
+                $location: $location
+              });
+        };
 
         spyOn(userServiceMock, "getCurrentUser").and.callThrough();
         spyOn(articleServiceMock, "create").and.callThrough();
-        //spyOn(CreateUpdateArticleFormController, "create").and.callThrough();
-        //directiveElem = getCompiledElement();
+        spyOn(articleServiceMock, "update").and.callThrough();
+        spyOn(articleServiceMock, "getDetails").and.callThrough();
+
       }));
 
-      // function getCompiledElement() {
-      //   var element = angular.element('<create-update-article-form></create-update-article-form>');
-      //   var compiledElement = $compile(element)($scope);
-      //   directiveScope = compiledElement.isolateScope() || compiledElement.scope();
-      //   $scope.$digest();
-      //   directiveController = compiledElement.controller("createUpdateArticleForm");
-      //
-      //   return compiledElement;
-      // }
-
-      // it('Paging directive should be defined', function() {
-      //     expect(directiveElem).toBeDefined();
-      //   });
-
         it('Controller should be defined', function() {
-            expect(CreateUpdateArticleFormController).toBeDefined();
+          var controller = createController({});
+          expect(controller).toBeDefined();
         });
 
-        it('Controller check ', function() {
-          $scope.create();
+        it('Current user is null', function() {
+          var controller = createController({});
 
-          getArticleDefer.resolve(newArticle);
+          getCurrentUserDefer.resolve(null);
+          $scope.$apply();
 
-          // wait for resolve promises.
-          $rootScope.$apply();
+          expect(userServiceMock.getCurrentUser).toHaveBeenCalled();
+          expect($location.path()).toBe('/login');
+        });
 
-          // since we have spyon the "getArticleById" - check that "getArticleById" has benn called.
+        it('Current user is not null and $routeParams.id null', function() {
+
+          var controller = createController({id: null});
+
+          getCurrentUserDefer.resolve(user);
+          $scope.$apply();
+
+          getCurrentUserDefer.resolve(user);
+          $scope.$apply();
+
+          expect(userServiceMock.getCurrentUser).toHaveBeenCalled();
+          expect($scope.isCreate).toBe(true);
+          expect($scope.title).toBe('');
+          expect($scope.content).toBe('');
+          expect($scope.articleId).toBe('');
+          expect($scope.userId).toBe(user.id);
+          expect($scope.userName).toBe(user.name);
+        });
+
+        it('Current user is not null and $routeParams.id not null', function() {
+
+          var controller = createController({id: 1});
+
+          getCurrentUserDefer.resolve(user);
+          $scope.$apply();
+
+          getDetailsArticleDefer.resolve(newArticle);
+          $scope.$apply();
+
+          expect(userServiceMock.getCurrentUser).toHaveBeenCalled();
+          expect(articleServiceMock.getDetails).toHaveBeenCalled();
+          expect($scope.isCreate).toBe(false);
+          expect($scope.title).toBe(newArticle.title);
+          expect($scope.content).toBe(newArticle.content);
+          expect($scope.articleId).toBe(newArticle._id);
+          expect($scope.userId).toBe(newArticle.user._id);
+          expect($scope.userName).toBe(newArticle.user.username);
+        });
+
+        it('Action is Update', function() {
+          var controller = createController({id: 1});
+
+          getCurrentUserDefer.resolve(user);
+          $scope.$apply();
+
+          getDetailsArticleDefer.resolve(newArticle);
+          $scope.$apply();
+
+          $scope.action();
+
+          updateArticleDefer.resolve();
+          $scope.$apply();
+
+          expect(userServiceMock.getCurrentUser).toHaveBeenCalled();
+          expect(articleServiceMock.getDetails).toHaveBeenCalled();
+          expect(articleServiceMock.update).toHaveBeenCalled();
+          expect($location.path()).toBe('/');
+        });
+
+        it('Action is Create', function() {
+
+          var controller = createController({});
+
+          getCurrentUserDefer.resolve(user);
+          $scope.$apply();
+
+          getCurrentUserDefer.resolve(user);
+          $scope.$apply();
+
+          $scope.action();
+
+          createArticleDefer.resolve();
+          $scope.$apply();
+
+          expect(userServiceMock.getCurrentUser).toHaveBeenCalled();
           expect(articleServiceMock.create).toHaveBeenCalled();
-
-          // // check that when "loadArticles" finishes - we have the correct valuen in the controller.
-          // expect(ArticleDetailController.article.id).toBe(newArticleId);
-          // expect(ArticleDetailController.article.user.user_id).toBe(newArticle.user.user_id);
+          expect($location.path()).toBe('/');
         });
   });
-
-
-
-  // it("HTML", function() {
-  //   var divElement = directiveElem.find('div');
-  //   expect(divElement).toBeDefined();
-  // })
-
-  // describe('Testing directive html', function(){
-  //   var compile, scope, directiveElem;
-  //   var userServiceMock;
-  //   var $httpBackend, authRequestHandler;
-  //
-  //   beforeEach(module('app'));
-  //
-  //   // mock
-  //   beforeEach(function() {
-  //
-  //      userServiceMock = {
-  //          getCurrentUser: function() {
-  //            getCurrentUserHz = $q.defer();
-  //            return getCurrentUserHz.promise;
-  //         }
-  //     };
-  //   });
-  //
-  //   beforeEach(function(){
-  //
-  //       inject(function($compile, $rootScope, $templateCache, userService, articleService, $routeParams, $location, $injector, $controller){
-  //         // Set up the mock http service responses
-  //         $httpBackend = $injector.get('$httpBackend');
-  //         // backend definition common for all tests
-  //         authRequestHandler = $httpBackend.when('GET', './api/users/current')
-  //               .respond({userId: 'userX'}, {'A-Token': 'xxx'});
-  //
-  //           compile = $compile;
-  //           scope = $rootScope.$new();
-  //
-  //           var element = angular.element("<create-update-article-form></create-update-article-form>");
-  //           template = $compile(element)(scope);
-  //           scope.$digest();
-  //           //controller = element.controller;
-  //           controller = $controller('createUpdateArticleForm', {
-  //             $scope: scope,
-  //             userService: userServiceMock,
-  //             $routeParams: $routeParams
-  //           });;
-  //       });
-  //   });
-  //
-  //   it('should have root div element', function () {
-  //     //$httpBackend.expectGET('./api/users/current');
-  //
-  //       //   $httpBackend.flush();
-  //
-  //       var divElement = directiveElem.find('div');
-  //       expect(divElement).toBeDefined();
-  //       console.log(divElement.text());
-  //       //expect(divElement.text()).toEqual('This span is appended from directive.');
-  //   });
-  //
-  //   // it("should toogle open when toggle() is called", inject(function() {
-  //   //      $scope.open = false;
-  //   //      $scope.toggle();
-  //   //      expect($scope.open).toBeTruthy();
-  //   //      $scope.toggle();
-  //   //      expect($scope.open).toBeFalsy();
-  //   //  }));
-  // });
-
-
 });
