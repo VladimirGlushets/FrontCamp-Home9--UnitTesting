@@ -14,6 +14,9 @@
               var maxSize = 10;
               $scope.allArticlesSource =[];
               $scope.filterDataLength = [];
+              $scope.filterData = [];
+              $scope.currentPage = 1;
+              $scope.itemsPerPage = 10;
               $scope.loadArticles = loadArticles;
               $scope.delete = deleteArticle;
 
@@ -63,12 +66,8 @@
             }
 
             function loadArticles(){
-                var startPos = ($scope.filterObj.Page - 1) * $scope.filterObj.ItemsPerPage;
-                $scope.articles = $scope.allArticlesSource.slice(startPos, startPos + $scope.filterObj.ItemsPerPage);
-
-                // articleService.getArticles($scope.filterObj).then(function(data){
-                //     $scope.articles = data;
-                // });
+                var startPos = ($scope.currentPage - 1) * $scope.itemsPerPage;
+                $scope.articles = $scope.filterData.slice(startPos, startPos + $scope.itemsPerPage);
             }
           },
 

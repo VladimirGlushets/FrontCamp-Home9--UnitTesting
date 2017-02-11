@@ -1,10 +1,10 @@
 (function (app) {
     'use strict';
 
-    app.directive('paggination', PagingDirective);
+    app.directive('paggination', Paggination);
 
-    PagingDirective.$inject = [];
-    function PagingDirective() {
+    Paggination.$inject = [];
+    function Paggination() {
         return {
             restrict: 'EA',
             scope: {
@@ -12,55 +12,69 @@
                 alignModel: '=',
                 pageChanged: '&',
                 steps: '=',
-                currentPage: '='
+                currentPage: '=',
+                maxSize: '='
             },
-            controller: PagingController,
+            controller: PagginationController,
             controllerAs: 'vm',
             template: [
-                '<md-button class="md-icon-button md-raised md-warn" aria-label="First" ng-click="vm.gotoFirst()">{{ vm.first }}</md-button>',
-                '<md-button class="md-icon-button md-raised" aria-label="Previous" ng-click="vm.gotoPrev()" ng-show="vm.index - 1 >= 0">&#8230;</md-button>',
-                '<md-button class="pagination-page ng-scope active" aria-label="Go to page {{i+1}}" ng-repeat="i in vm.stepInfo"',
-                ' ng-click="vm.goto(vm.index + i)" ng-show="vm.page[vm.index + i]" ',
-                ' ng-class="{\'md-primary\': vm.page[vm.index + i] == currentPage}">',
-                ' {{ vm.page[vm.index + i] }}',
-                '</md-button>',
-                '<md-button class="md-icon-button md-raised" aria-label="Next" ng-click="vm.gotoNext()" ng-show="vm.index + vm.steps < pages">&#8230;</md-button>',
-                '<md-button class="md-icon-button md-raised md-warn" aria-label="Last" ng-click="vm.gotoLast()">{{ vm.last }}</md-button>',
+              '<ul class="pagination-sm pagination ng-isolate-scope ng-valid ng-not-empty" ng-model="alignModel" total-items="pages" ' +
+              'max-size="10" boundary-links="true" ' +
+              'ng-change="loadArticles()" boundary-link-numbers="true" rotate="false" ng-show="pages">',
+                '<li ng-class="{disabled: vm.noPrevious()||ngDisabled}" class="pagination-first ng-scope disabled">' +
+                    '<a href="" ng-click="vm.gotoFirst()" class="ng-binding">First</a></li>',
+                '<li ng-class="{disabled: vm.noPrevious()||ngDisabled}" class="pagination-prev ng-scope disabled">' +
+                    '<a href="" ng-click="vm.gotoPrev()" class="ng-binding">Previous</a></li>',
 
-              //   '<ul class="pagination-sm pagination ng-isolate-scope ng-valid ng-not-empty" ng-model="filterObj.Page" total-items="filterData.length" max-size="10" boundary-links="true" ng-change="loadArticles()" boundary-link-numbers="true" rotate="false" ng-show="(filterData.length > filterObj.ItemsPerPage)">',
-              //   '<li ng-class="{disabled: noPrevious()||ngDisabled}" class="pagination-first ng-scope disabled"><a href="" ng-click="selectPage(1, $event)" class="ng-binding">First</a></li>',
-              //   '<li ng-class="{disabled: noPrevious()||ngDisabled}" class="pagination-prev ng-scope disabled"><a href="" ng-click="selectPage(page - 1, $event)" class="ng-binding">Previous</a></li>',
-              //   '<li ng-repeat="page in pages track by $index" ng-class="{active: page.active,disabled: ngDisabled&amp;&amp;!page.active}" class="pagination-page ng-scope active"><a href="" ng-click="selectPage(page.number, $event)" class="ng-binding">1</a></li>',
-              //   '<li ng-class="{disabled: noNext()||ngDisabled}" class="pagination-next ng-scope"><a href="" ng-click="selectPage(page + 1, $event)" class="ng-binding">Next</a></li>',
-              //   '<li ng-class="{disabled: noNext()||ngDisabled}" class="pagination-last ng-scope"><a href="" ng-click="selectPage(totalPages, $event)" class="ng-binding">Last</a></li>',
-              // '</ul>'
+                '<li ng-repeat="i in vm.stepInfo" ng-class="{active: (vm.page[vm.index + i] == currentPage)}"' +
+                    'class="pagination-page ng-scope" ng-show="vm.page[vm.index + i]">' +
+                        '<a href="" ng-click="vm.goto(vm.index + i)" class="ng-binding">' +
+                            '{{ vm.page[vm.index + i] }}</a></li>',
+
+                '<li ng-class="{disabled: vm.noNext()||ngDisabled}" class="pagination-next ng-scope">' +
+                    '<a href="" ng-click="vm.gotoNext()" class="ng-binding">Next</a></li>',
+                '<li ng-class="{disabled: vm.noNext()||ngDisabled}" class="pagination-last ng-scope">' +
+                '   <a href="" ng-click="vm.gotoLast()" class="ng-binding">Last</a></li>',
+              '</ul>'
             ].join('')
         };
     }
 
-    PagingController.$inject = ['$scope'];
-    function PagingController($scope) {
+    PagginationController.$inject = ['$scope'];
+    function PagginationController($scope) {
         var vm = this;
-
-        vm.first = '<<';
-        vm.last = '>>';
-
         vm.index = 0;
 
         vm.steps = $scope.steps;
+
+        vm.noNext = function(){
+            return $scope.currentPage == vm.stepInfo.length;
+        };
+
+        vm.noPrevious = function () {
+            return $scope.currentPage == 1;
+        };
 
         vm.goto = function (index) {
             $scope.currentPage = vm.page[index];
         };
 
         vm.gotoPrev = function () {
-            $scope.currentPage = vm.index;
-            vm.index -= vm.steps;
+            var prevItem = $scope.currentPage - 1;
+
+            if(prevItem > 0)
+            {
+                $scope.currentPage = prevItem;
+            }
         };
 
         vm.gotoNext = function () {
-            vm.index += vm.steps;
-            $scope.currentPage = vm.index + 1;
+            var nextItem = $scope.currentPage + 1;
+
+            if(vm.stepInfo.length >= nextItem)
+            {
+                $scope.currentPage = nextItem;
+            }
         };
 
         vm.gotoFirst = function () {
@@ -69,12 +83,11 @@
         };
 
         vm.gotoLast = function () {
-            vm.index = parseInt($scope.pages / vm.steps) * vm.steps;
-            vm.index === $scope.pages ? vm.index = vm.index - vm.steps : '';
-            $scope.currentPage = $scope.pages;
+            $scope.currentPage = vm.stepInfo.length;
         };
 
         $scope.$watch('currentPage', function (value) {
+            vm.currentPage = 1;
             vm.index = parseInt((value - 1) / vm.steps) * vm.steps;
             $scope.pageChanged();
         });
@@ -86,7 +99,10 @@
         vm.init = function () {
             vm.stepInfo = (function () {
                 var result = [];
-                for (var i = 0; i < vm.steps; i++) {
+
+                var items = Math.ceil($scope.pages / $scope.maxSize);
+
+                for (var i = 0; i < items; i++) {
                     result.push(i)
                 }
                 return result;
@@ -94,7 +110,10 @@
 
             vm.page = (function () {
                 var result = [];
-                for (var i = 1; i <= $scope.pages; i++) {
+
+                var items = Math.ceil($scope.pages / $scope.maxSize);
+
+                for (var i = 1; i <= items; i++) {
                     result.push(i);
                 }
                 return result;

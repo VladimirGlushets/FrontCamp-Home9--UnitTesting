@@ -2,27 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6b49881-640d-4492-826c-75c84ca52e6f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/angular/Shared/Directives/amountOfArticles.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/angular/tests/unit/amountOfArticles_test.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/angular/tests/unit/angularTestController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/angular/tests/unit/createUpdateArticleForm_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/angular/tests/unit/paggination_tests.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/angular/tests/unit/angularTestController.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/angular/tests/unit/testingAngularSpec.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/1.server.js" afterPath="$PROJECT_DIR$/1.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/2.server.js" afterPath="$PROJECT_DIR$/2.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/3.server.js" afterPath="$PROJECT_DIR$/3.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular/Shared/Directives/articles.js" afterPath="$PROJECT_DIR$/public/angular/Shared/Directives/articles.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular/Shared/Directives/createUpdateArticleForm.js" afterPath="$PROJECT_DIR$/public/angular/Shared/Directives/createUpdateArticleForm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular/Shared/Directives/paggination.js" afterPath="$PROJECT_DIR$/public/angular/Shared/Directives/paggination.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular/Shared/PartialViews/articles.html" afterPath="$PROJECT_DIR$/public/angular/Shared/PartialViews/articles.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular/Shared/PartialViews/createUpdateArticleForm.html" afterPath="$PROJECT_DIR$/public/angular/Shared/PartialViews/createUpdateArticleForm.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular/tests/karma.conf.js" afterPath="$PROJECT_DIR$/public/angular/tests/karma.conf.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/angular/tests/unit/testingAngularSpec.js" afterPath="$PROJECT_DIR$/public/angular/tests/unit/testingAngularSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/articlesBundle.js" afterPath="$PROJECT_DIR$/public/build/articlesBundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/articlesBundle.js.map" afterPath="$PROJECT_DIR$/public/build/articlesBundle.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/detailsBundle.js" afterPath="$PROJECT_DIR$/public/build/detailsBundle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/build/detailsBundle.js.map" afterPath="$PROJECT_DIR$/public/build/detailsBundle.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/angular/angularIndex.html" afterPath="$PROJECT_DIR$/templates/angular/angularIndex.html" />
     </list>
     <ignored path="FrontCamp-Home7-React.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,43 +30,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="createUpdateArticleForm_test.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/angular/tests/unit/createUpdateArticleForm_test.js">
+      <file leaf-file-name="paggination_tests.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/angular/tests/unit/paggination_tests.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+            <state relative-caret-position="294">
+              <caret line="46" column="39" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="createUpdateArticleForm.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/angular/Shared/Directives/createUpdateArticleForm.js">
+      <file leaf-file-name="angularIndex.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/angular/angularIndex.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="549">
-              <caret line="79" column="49" selection-start-line="79" selection-start-column="49" selection-end-line="79" selection-end-column="49" />
+            <state relative-caret-position="268">
+              <caret line="45" column="40" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="karma.conf.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/angular/tests/karma.conf.js">
+      <file leaf-file-name="paggination.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/angular/Shared/Directives/paggination.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state relative-caret-position="299">
+              <caret line="75" column="46" selection-start-line="75" selection-start-column="46" selection-end-line="75" selection-end-column="46" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="createUpdateArticleForm.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/angular/Shared/PartialViews/createUpdateArticleForm.html">
+      <file leaf-file-name="articles.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/angular/Shared/PartialViews/articles.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="72" selection-start-line="4" selection-start-column="72" selection-end-line="4" selection-end-column="72" />
+            <state relative-caret-position="323">
+              <caret line="34" column="52" selection-start-line="34" selection-start-column="52" selection-end-line="34" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -106,8 +90,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/components/helloWorldReact.js" />
-        <option value="$PROJECT_DIR$/templates/layout/react.ejs" />
         <option value="$PROJECT_DIR$/public/js/Helpers/UrlHelper.js" />
         <option value="$PROJECT_DIR$/public/components/helloWorldReact.js" />
         <option value="$PROJECT_DIR$/public/js/Services/ArticlesService.js" />
@@ -143,19 +125,22 @@
         <option value="$PROJECT_DIR$/routes/api/articlesApi.js" />
         <option value="$PROJECT_DIR$/controllers/api/apiArticleController.js" />
         <option value="$PROJECT_DIR$/services/articleService.js" />
-        <option value="$PROJECT_DIR$/public/angular/tests/unit/testingAngularSpec.js" />
         <option value="$PROJECT_DIR$/public/angular/tests/angularTestController.js" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/public/angular/Shared/Directives/articles.js" />
         <option value="$PROJECT_DIR$/templates/angular/angularIndex.html" />
-        <option value="$PROJECT_DIR$/public/angular/Shared/PartialViews/articles.html" />
         <option value="$PROJECT_DIR$/public/angular/Shared/PartialViews/amountOfArticles.html" />
         <option value="$PROJECT_DIR$/public/angular/Shared/Directives/amountOfArticles.js" />
         <option value="$PROJECT_DIR$/public/angular/tests/unit/amountOfArticles_test.js" />
         <option value="$PROJECT_DIR$/public/angular/Shared/PartialViews/createUpdateArticleForm.html" />
         <option value="$PROJECT_DIR$/public/angular/tests/karma.conf.js" />
-        <option value="$PROJECT_DIR$/public/angular/Shared/Directives/createUpdateArticleForm.js" />
         <option value="$PROJECT_DIR$/public/angular/tests/unit/createUpdateArticleForm_test.js" />
+        <option value="$PROJECT_DIR$/public/angular/Shared/Directives/createUpdateArticleForm.js" />
+        <option value="$PROJECT_DIR$/public/angular/Shared/Directives/articles.js" />
+        <option value="$PROJECT_DIR$/public/angular/Shared/PartialViews/articles.html" />
+        <option value="$PROJECT_DIR$/public/angular/tests/unit/paggination_tests.js" />
+        <option value="$PROJECT_DIR$/public/angular/tests/unit/angularTestController.js" />
+        <option value="$PROJECT_DIR$/public/angular/tests/unit/testingAngularSpec.js" />
+        <option value="$PROJECT_DIR$/public/angular/Shared/Directives/paggination.js" />
       </list>
     </option>
   </component>
@@ -175,7 +160,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
     <option name="width" value="1378" />
-    <option name="height" value="736" />
+    <option name="height" value="735" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -406,50 +391,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FrontCamp-Home7-React" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FrontCamp-Home9-UnitTesting" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CreateUpdateArticle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FrontCamp-Home7-React" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FrontCamp-Home9-UnitTesting" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Articles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -550,15 +491,16 @@
       <workItem from="1484761223556" duration="12938000" />
       <workItem from="1484843945252" duration="23363000" />
       <workItem from="1486196627034" duration="25097000" />
-      <workItem from="1486572482149" duration="17825000" />
+      <workItem from="1486572482149" duration="18095000" />
+      <workItem from="1486796106107" duration="11751000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85546000" />
+    <option name="totallyTimeSpent" value="97567000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1378" height="736" extended-state="0" />
+    <frame x="-7" y="0" width="1378" height="735" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22089553" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -627,20 +569,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.babelrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/www">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -730,7 +658,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="43" column="32" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -781,7 +708,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="41" column="31" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -789,7 +715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="284">
           <caret line="94" column="1" selection-start-line="94" selection-start-column="1" selection-end-line="94" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -819,9 +744,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -836,7 +758,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -844,7 +765,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -852,7 +772,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -860,7 +779,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="30" column="26" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -868,7 +786,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -876,7 +793,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="426">
           <caret line="66" column="28" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -884,7 +800,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -892,7 +807,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="71" selection-start-line="1" selection-start-column="71" selection-end-line="1" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -900,50 +814,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/angular/tests/unit/angularTestController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/angular/Shared/PartialViews/articles.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/angular/Shared/Directives/articles.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/angular/tests/unit/testingAngularSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/angular/Shared/PartialViews/amountOfArticles.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="29" selection-start-line="0" selection-start-column="29" selection-end-line="0" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/public/angular/Shared/PartialViews/amountOfArticles.html" />
     <entry file="file://$PROJECT_DIR$/public/angular/Shared/Directives/amountOfArticles.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -956,7 +830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -964,25 +837,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/angular/angularIndex.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/angular/tests/karma.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -994,18 +848,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/angular/tests/unit/createUpdateArticleForm_test.js">
+    <entry file="file://$PROJECT_DIR$/public/angular/Shared/Directives/createUpdateArticleForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+        <state relative-caret-position="226">
+          <caret line="60" column="30" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/angular/Shared/Directives/createUpdateArticleForm.js">
+    <entry file="file://$PROJECT_DIR$/public/angular/tests/unit/createUpdateArticleForm_test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="79" column="49" selection-start-line="79" selection-start-column="49" selection-end-line="79" selection-end-column="49" />
+        <state relative-caret-position="85">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+          <folding>
+            <marker date="1486795888206" expanded="true" signature="5432:5435" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/angular/Shared/Directives/articles.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/angular/Shared/PartialViews/articles.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="34" column="52" selection-start-line="34" selection-start-column="52" selection-end-line="34" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/angular/tests/unit/angularTestController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/angular/tests/unit/testingAngularSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/angular/tests/unit/paggination_tests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="46" column="39" selection-start-line="46" selection-start-column="39" selection-end-line="46" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/angular/angularIndex.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="45" column="40" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/angular/tests/karma.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/angular/Shared/Directives/paggination.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="75" column="46" selection-start-line="75" selection-start-column="46" selection-end-line="75" selection-end-column="46" />
           <folding />
         </state>
       </provider>

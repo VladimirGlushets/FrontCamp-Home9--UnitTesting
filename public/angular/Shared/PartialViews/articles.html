@@ -32,16 +32,18 @@
                 <div class="articles-paging-container">
                       <paggination flex
                         pages="filterData.length"
-                        current-page="1"
+                        align-model="filterObj.Page"
+                        max-size=10
+                        current-page="currentPage"
                         class="articles-paging-control"
                         steps="5"
-                        page-changed="vm.pageChanged()"
+                        page-changed="loadArticles()"
                         cl-align="center center">
 
                         </paggination>
                 </div>
 
-            <div ng-repeat="item in filterData = (allArticlesSource | filter:{ article : {title : searchText} }) | limitTo:filterObj.ItemsPerPage:filterObj.ItemsPerPage*(filterObj.Page - 1)">
+            <div ng-repeat="item in filterData = (allArticlesSource | filter:{ article : {title : searchText} }) | limitTo:itemsPerPage:itemsPerPage*(currentPage - 1)">
                     <div class="article-container">
                         <div class="body">
                             <div class="image">
