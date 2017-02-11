@@ -1,4 +1,4 @@
-describe('Paggination directive', function() {
+describe('Paggination directive', function () {
 
     var $compile,
         $scope,
@@ -9,7 +9,7 @@ describe('Paggination directive', function() {
     // Before each test load bloglog module
     beforeEach(angular.mock.module('app'));
 
-    beforeEach(inject(function(_$compile_, _$rootScope_) {
+    beforeEach(inject(function (_$compile_, _$rootScope_) {
         $compile = _$compile_;
         $rootScope = _$rootScope_;
         $scope = _$rootScope_.$new();
@@ -26,11 +26,11 @@ describe('Paggination directive', function() {
         return compiledElement;
     }
 
-    it('Paging directive should be defined', function() {
+    it('Paging directive should be defined', function () {
         expect(directiveElem).toBeDefined();
     });
 
-    it('check goto index', function() {
+    it('check goto index', function () {
         var pageValue = 5;
         directiveScope.vm.goto(pageValue);
         expect(directiveScope.currentPage - 1).toBe(pageValue);

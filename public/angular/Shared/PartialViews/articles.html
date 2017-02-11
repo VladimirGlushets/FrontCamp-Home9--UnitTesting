@@ -1,81 +1,84 @@
 <div class="content-container">
 
-        <div>
-          <div class="row">
-          <div class="col-md-12">
-            <div class="col-md-4 create-btn">
-                <a class="create-link" href="#!/article/create">Create New</a>
-            </div>
-            <div class="col-md-4">
-
-            </div>
-            <div class="col-md-4 float-right">
-              <span>Search by Title: </span>
-                <input type="text" ng-model="searchText"/>
-                <amount-of-articles filter-data-length="filterData.length" total="filterObj.Total"></amount-of-articles>
-            </div>
-          </div>
-          </div>
-
-            <!-- <uib-pagination
-                ng-model="filterObj.Page"
-                total-items="filterData.length"
-                max-size=10
-                class="pagination-sm"
-                boundary-links="true"
-                ng-change="loadArticles()"
-                boundary-link-numbers="true"
-                rotate="false"
-                ng-show="(filterData.length > filterObj.ItemsPerPage)">
-                </uib-pagination> -->
-
-                <div class="articles-paging-container">
-                      <paggination flex
-                        pages="filterData.length"
-                        align-model="filterObj.Page"
-                        max-size=10
-                        current-page="currentPage"
-                        class="articles-paging-control"
-                        steps="5"
-                        page-changed="loadArticles()"
-                        cl-align="center center">
-
-                        </paggination>
+    <div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-4 create-btn">
+                    <a class="create-link" href="#!/article/create">Create New</a>
                 </div>
+                <div class="col-md-4">
 
-            <div ng-repeat="item in filterData = (allArticlesSource | filter:{ article : {title : searchText} }) | limitTo:itemsPerPage:itemsPerPage*(currentPage - 1)">
-                    <div class="article-container">
-                        <div class="body">
-                            <div class="image">
+                </div>
+                <div class="col-md-4 float-right">
+                    <span>Search by Title: </span>
+                    <input type="text" ng-model="searchText"/>
+                    <amount-of-articles filter-data-length="filterData.length"
+                                        total="filterObj.Total"></amount-of-articles>
+                </div>
+            </div>
+        </div>
 
-                                <div ng-show="{{ isUserAuth }}">
-                                    <a class="delete-article" href="#" data-id="{{ item.article._id }}" ng-click="delete(item.article._id)">Remove</a>
-                                </div>
-                                <div ng-show="{{ isUserAuth }}">
-                                    <a class="update-article" href="{{ '#!/article/update/' + item.article._id }}">Update</a>
-                                </div>
+        <!-- <uib-pagination
+            ng-model="filterObj.Page"
+            total-items="filterData.length"
+            max-size=10
+            class="pagination-sm"
+            boundary-links="true"
+            ng-change="loadArticles()"
+            boundary-link-numbers="true"
+            rotate="false"
+            ng-show="(filterData.length > filterObj.ItemsPerPage)">
+            </uib-pagination> -->
+
+        <div class="articles-paging-container">
+            <paggination flex
+                         pages="filterData.length"
+                         align-model="filterObj.Page"
+                         max-size=10
+                         current-page="currentPage"
+                         class="articles-paging-control"
+                         steps="5"
+                         page-changed="loadArticles()"
+                         cl-align="center center">
+
+            </paggination>
+        </div>
+
+        <div ng-repeat="item in filterData = (allArticlesSource | filter:{ article : {title : searchText} }) | limitTo:itemsPerPage:itemsPerPage*(currentPage - 1)">
+            <div class="article-container">
+                <div class="body">
+                    <div class="image">
+
+                        <div ng-show="{{ isUserAuth }}">
+                            <a class="delete-article" href="#" data-id="{{ item.article._id }}"
+                               ng-click="delete(item.article._id)">Remove</a>
+                        </div>
+                        <div ng-show="{{ isUserAuth }}">
+                            <a class="update-article" href="{{ '#!/article/update/' + item.article._id }}">Update</a>
+                        </div>
 
 
-                                <div class="floater">
-                                    <a href="http://www.abc.net.au/news/2016-12-28/australia-pakistan-mcg-second-test-day-three/8151468" target="_blank"><img src="http://www.abc.net.au/news/image/8151536-1x1-700x700.jpg"></a>
-                                </div>
-                            </div>
-                            <div class="title">
-                                <a href='{{ item.actionUrls.detailArticleUrl }}'>
-                                    {{ item.article.title }}
-                                </a>
-                            </div>
-                            <div class="author">
-                                {{ item.article.user.name }}
-                            </div>
-                            <div class="description">
-                                {{ item.article.content }}
-                            </div>
-                            <div class="publish-at">
-                                {{ item.article.createdDate }}
-                            </div>
+                        <div class="floater">
+                            <a href="http://www.abc.net.au/news/2016-12-28/australia-pakistan-mcg-second-test-day-three/8151468"
+                               target="_blank"><img src="http://www.abc.net.au/news/image/8151536-1x1-700x700.jpg"></a>
                         </div>
                     </div>
+                    <div class="title">
+                        <a href='{{ item.actionUrls.detailArticleUrl }}'>
+                            {{ item.article.title }}
+                        </a>
+                    </div>
+                    <div class="author">
+                        {{ item.article.user.name }}
+                    </div>
+                    <div class="description">
+                        {{ item.article.content }}
+                    </div>
+                    <div class="publish-at">
+                        {{ item.article.createdDate }}
+                    </div>
                 </div>
+            </div>
         </div>
     </div>
+</div>

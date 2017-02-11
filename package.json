@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node ./bin/www",
     "startb": "webpack --progress && node server",
-    "production": "webpack -p --progress && node server"
+    "production": "webpack -p --progress && node server",
+    "test-debug": "karma start public/angular/tests/karma.conf.debug.js",
+    "test": "karma start public/angular/tests/karma.conf.prod.js"
   },
   "dependencies": {
     "angular": "^1.6.1",
@@ -58,9 +60,11 @@
     "jasmine": "^2.5.3",
     "karma": "^1.4.1",
     "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.1.0",
     "karma-ng-html2js-preprocessor": "^1.0.0",
     "karma-phantomjs-launcher": "^1.0.2",
+    "karma-spec-reporter": "0.0.26",
     "karma-webpack": "^2.0.2",
     "mongodb": "^2.2.16",
     "mongoose": "^4.7.5",

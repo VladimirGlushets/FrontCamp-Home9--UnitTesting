@@ -7,7 +7,7 @@
         },
         //controllerAs: 'vm',
         controller: function () {
-            this.$onInit = function() {
+            this.$onInit = function () {
 
             }
         },
